@@ -37,7 +37,15 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+	cron { pulp_login:
+          command => "/usr/bin/yum search sl",
+          user    => root,
+          minute  => absent
+        }
+
+        notify {'I ran!':}
+
+        Cron['pulp_login'] -> Notify['I ran!']
 
 }
 

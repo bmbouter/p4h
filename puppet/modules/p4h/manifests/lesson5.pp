@@ -44,7 +44,13 @@ Bonus:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+	notify {'print something':
+          message => "I am going to print this fact $::hardware_platform"
+        }
+
+	notify {'non ruby facts':
+          message => "$::key1"
+        }
 
 }
 

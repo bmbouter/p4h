@@ -40,7 +40,29 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+	$names = [ 'brian', 'ranty', 'barnaby' ]
+
+        define recursion(
+            $names
+        ) {
+            # do something here...
+            notify { "Hi: ${names[0]}":
+            }
+            $minus1 = inline_template('<%= count.to_i - 1 %>')
+            if "${minus1}" == '0' {
+                notify { 'done counting!':
+                }
+            } else {
+                # recurse
+                recursion { "count-${minus1}":
+                    names => $names
+                }
+            }
+        }
+
+        recursion { 'start':
+            names => $names,
+        }
 
 }
 

@@ -44,7 +44,8 @@ Level 42:
 Happy hacking!\n",
 	}
 
-	# XXX: write your code here...
+        $my_array = [4, 6, 9]
+	$my_var = inline_template("<%= @my_array.inject(Hash.new) { |result, element| result + element }.to_yaml  %>")
 
 }
 
